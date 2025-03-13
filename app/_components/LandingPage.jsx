@@ -1,10 +1,10 @@
-"use client"
-import React from 'react'
-import Navbar from './Navbar'
+"use client";
+import React from 'react';
+import Navbar from './Navbar';
 import { useState } from 'react';
-import { TextGenerateEffect } from '@/components/ui/TextGenerateEffect'
-import { Button } from '@/components/ui/button';
-import { ChevronRight,Star} from "lucide-react"
+import { TextGenerateEffect } from "../../components/ui/TextGenerateEffect";
+
+import { ChevronRight,Star} from "lucide-react";
 
 
 const LandingPage = () => {

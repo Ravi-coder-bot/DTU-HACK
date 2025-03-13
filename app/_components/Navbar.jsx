@@ -145,7 +145,7 @@ const Navbar = () => {
             Team
           </button>
           <a
-            href="https://github.com/ArshTiwari2004/Waygen"
+            href="https://github.com/Ravi-coder-bot"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center py-2 text-gray-300 hover:text-green-900 transition-colors"
