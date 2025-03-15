@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import axios, { AxiosError } from "axios";
+import axios from "axios";
 
 export default function DoctorBookingPage() {
   // Doctor Booking State
@@ -16,10 +16,11 @@ export default function DoctorBookingPage() {
 
   // Chatbot State
   const [message, setMessage] = useState("");
-  const [chatHistory, setChatHistory] = useState<{ role: string; content: string }[]>([]);
+  const [chatHistory, setChatHistory] = useState([]);
   const [loading, setLoading] = useState(false);
   const [isChatVisible, setIsChatVisible] = useState(false);
 
+<<<<<<< HEAD:app/(with-auth-layout)/doctor-consult/page.tsx
   const categories = [
     "All",
     "Dermatologist",
@@ -96,6 +97,9 @@ export default function DoctorBookingPage() {
 
   // Chatbot Submit Handler
   const handleChatSubmit = async (e: React.FormEvent) => {
+=======
+  const handleSubmit = async (e) => {
+>>>>>>> 76917364886be09a3df46abe392db56d782f1b4f:app/(with-auth-layout)/doctor-consult/page.jsx
     e.preventDefault();
     if (!message.trim()) return;
 
@@ -103,9 +107,10 @@ export default function DoctorBookingPage() {
     setLoading(true);
 
     try {
-      const response = await axios.post<{ response: string }>("/api/gemini", { message });
+      const response = await axios.post("/api/gemini", { message });
       const botResponse = response.data.response;
       setChatHistory((prev) => [...prev, { role: "bot", content: botResponse }]);
+<<<<<<< HEAD:app/(with-auth-layout)/doctor-consult/page.tsx
     } catch (error: AxiosError<{ error: string; details?: string }>) {
       const errorMessage =
         error.response?.data?.details ||
@@ -117,6 +122,10 @@ export default function DoctorBookingPage() {
         status: error.response?.status,
         data: error.response?.data,
       });
+=======
+    } catch (error) {
+      console.error("Error:", error);
+>>>>>>> 76917364886be09a3df46abe392db56d782f1b4f:app/(with-auth-layout)/doctor-consult/page.jsx
       setChatHistory((prev) => [
         ...prev,
         { role: "bot", content: `Error: ${errorMessage}` },
@@ -127,6 +136,7 @@ export default function DoctorBookingPage() {
     }
   };
 
+<<<<<<< HEAD:app/(with-auth-layout)/doctor-consult/page.tsx
   // Toggle Chat Visibility
   const toggleChat = () => {
     setIsChatVisible((prev) => !prev);
@@ -144,6 +154,17 @@ export default function DoctorBookingPage() {
             value={searchCategory}
             onChange={(e) => setSearchCategory(e.target.value)}
             className="w-full sm:w-64 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800"
+=======
+  return (
+    <div className="max-w-2xl mx-auto p-6 bg-gray-900 text-white rounded-lg shadow-lg">
+      <h1 className="text-2xl font-bold mb-4 text-center">MrDocto</h1>
+      
+      <div className="h-96 overflow-y-auto mb-4 p-4 bg-gray-800 rounded-lg">
+        {chatHistory.map((entry, index) => (
+          <div
+            key={index}
+            className={`mb-2 p-3 rounded-lg ${entry.role === "user" ? "bg-blue-600 text-right" : "bg-gray-700 text-left"}`}
+>>>>>>> 76917364886be09a3df46abe392db56d782f1b4f:app/(with-auth-layout)/doctor-consult/page.jsx
           >
             <option value="">-- Select Specialty --</option>
             {categories.map((category) => (
