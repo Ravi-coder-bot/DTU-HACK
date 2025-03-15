@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 
 export default function DoctorBookingPage() {
+  // Doctor Booking State
   const [searchCategory, setSearchCategory] = useState("");
   const [selectedDoctor, setSelectedDoctor] = useState<any>(null);
   const [date, setDate] = useState("");
@@ -12,6 +13,12 @@ export default function DoctorBookingPage() {
   const [successMessage, setSuccessMessage] = useState("");
   const [bookedAppointments, setBookedAppointments] = useState<any[]>([]);
   const [showAppointments, setShowAppointments] = useState(false);
+
+  // Chatbot State
+  const [message, setMessage] = useState("");
+  const [chatHistory, setChatHistory] = useState<{ role: string; content: string }[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [isChatVisible, setIsChatVisible] = useState(false);
 
   const categories = [
     "All",
@@ -54,7 +61,8 @@ export default function DoctorBookingPage() {
     ? doctors.filter((doc) => doc.specialty === searchCategory)
     : doctors;
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  // Doctor Booking Submit Handler
+  const handleBookingSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!selectedDoctor || !date || !time) {
       alert("Please select a doctor and fill in all fields.");
@@ -86,8 +94,46 @@ export default function DoctorBookingPage() {
     }
   };
 
+  // Chatbot Submit Handler
+  const handleChatSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!message.trim()) return;
+
+    setChatHistory((prev) => [...prev, { role: "user", content: message }]);
+    setLoading(true);
+
+    try {
+      const response = await axios.post<{ response: string }>("/api/gemini", { message });
+      const botResponse = response.data.response;
+      setChatHistory((prev) => [...prev, { role: "bot", content: botResponse }]);
+    } catch (error: AxiosError<{ error: string; details?: string }>) {
+      const errorMessage =
+        error.response?.data?.details ||
+        error.response?.data?.error ||
+        error.message ||
+        "Unknown error occurred";
+      console.error("Axios Error:", {
+        message: error.message,
+        status: error.response?.status,
+        data: error.response?.data,
+      });
+      setChatHistory((prev) => [
+        ...prev,
+        { role: "bot", content: `Error: ${errorMessage}` },
+      ]);
+    } finally {
+      setLoading(false);
+      setMessage("");
+    }
+  };
+
+  // Toggle Chat Visibility
+  const toggleChat = () => {
+    setIsChatVisible((prev) => !prev);
+  };
+
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
+    <div className="relative min-h-screen bg-gray-100 p-6">
       <div className="max-w-6xl mx-auto">
         <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">
           Book a Doctor Appointment
@@ -111,12 +157,6 @@ export default function DoctorBookingPage() {
             className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
           >
             Search
-          </button>
-          <button
-            onClick={() => setShowAppointments(true)}
-            className="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
-          >
-            Show Appointments
           </button>
         </div>
 
@@ -174,7 +214,7 @@ export default function DoctorBookingPage() {
               <p className="text-gray-700 mb-2"><strong>Description:</strong> {selectedDoctor.description}</p>
               <p className="text-gray-700 mb-4"><strong>Experience:</strong> {selectedDoctor.experience} years</p>
 
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={handleBookingSubmit} className="space-y-4">
                 <div>
                   <label htmlFor="date" className="block text-sm font-medium text-gray-700 mb-1">
                     Appointment Date
@@ -183,6 +223,7 @@ export default function DoctorBookingPage() {
                     type="date"
                     id="date"
                     value={date}
+
                     onChange={(e) => setDate(e.target.value)}
                     min={new Date().toISOString().split("T")[0]}
                     className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800"
@@ -265,6 +306,111 @@ export default function DoctorBookingPage() {
           </div>
         )}
       </div>
+
+      {/* Floating Chatbot Button */}
+      <button
+        onClick={toggleChat}
+        className="fixed bottom-6 right-6 w-14 h-14 bg-blue-600 text-white rounded-full flex items-center justify-center shadow-lg hover:bg-blue-700 transition-colors z-50"
+        aria-label="Toggle Chatbot"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="w-6 h-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M8 10h8M8 14h4m4-8H5a2 2 0 00-2 2v10a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-1m-4 0V4m0 2h-4"
+          />
+        </svg>
+      </button>
+
+      {/* Floating Appointments Button */}
+      <button
+        onClick={() => setShowAppointments(true)}
+        className="fixed bottom-6 right-24 w-14 h-14 bg-green-600 text-white rounded-full flex items-center justify-center shadow-lg hover:bg-green-700 transition-colors z-50"
+        aria-label="Show Booked Appointments"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="w-6 h-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+          />
+        </svg>
+      </button>
+
+      {/* Chatbot UI */}
+      {isChatVisible && (
+        <div className="fixed bottom-20 right-6 max-w-2xl w-full sm:w-96 p-6 bg-gray-900 text-white rounded-lg shadow-lg z-40">
+          <div className="flex justify-between items-center mb-4">
+            <h1 className="text-xl font-bold">MindCare</h1>
+            <button
+              onClick={toggleChat}
+              className="text-gray-400 hover:text-white"
+              aria-label="Close Chatbot"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-5 h-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </div>
+
+          <div className="h-64 overflow-y-auto mb-4 p-4 bg-gray-800 rounded-lg">
+            {chatHistory.map((entry, index) => (
+              <div
+                key={index}
+                className={`mb-2 p-3 rounded-lg ${
+                  entry.role === "user" ? "bg-blue-600 text-right" : "bg-gray-700 text-left"
+                }`}
+              >
+                <p>{entry.content}</p>
+              </div>
+            ))}
+            {loading && <div className="text-center text-gray-400">Generating Response...</div>}
+          </div>
+
+          <form onSubmit={handleChatSubmit} className="flex gap-2">
+            <input
+              type="text"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              placeholder="Ask about symptoms, mental health, or anything else..."
+              className="flex-1 p-3 bg-gray-700 text-white border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              disabled={loading}
+            />
+            <button
+              type="submit"
+              className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 disabled:bg-blue-300"
+              disabled={loading}
+            >
+              Send
+            </button>
+          </form>
+        </div>
+      )}
     </div>
   );
 }
