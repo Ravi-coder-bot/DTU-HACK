@@ -77,7 +77,7 @@ export default function RootLayout({ children }) {
       {/* Main Content */}
       <div className="flex-1 flex flex-col">
         {/* Navbar */}
-        <nav className="sticky top-0 bg-gradient-to-r from-[#1E3A8A] to-[#0A1F44] p-4 flex justify-between items-center shadow-lg">
+        <nav className="z-10 sticky top-0 bg-gradient-to-r from-[#1E3A8A] to-[#0A1F44] p-4 flex justify-between items-center shadow-lg">
   <h1 className="text-lg font-semibold">Dashboard</h1>
   <div className="flex items-center gap-4">
     <NavButton label="Feedback" />
