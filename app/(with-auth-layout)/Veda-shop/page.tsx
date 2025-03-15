@@ -11,12 +11,14 @@ interface Product {
 
 const products: Record<string, Product[]> = {
   Ayurveda: [
-    { id: 1, name: "Ashwagandha", price: 199, image: "/ashwagandha.jpg", description: "Boosts immunity and reduces stress." },
-    { id: 2, name: "Brahmi", price: 249, image: "/brahmi.jpg", description: "Enhances brain function and memory." },
+    { id: 1, name: "Ashwagandha", price: 199, image: "https://media.istockphoto.com/id/1286731715/photo/root-withania-somnifera-known-commonly-as-ashwagandha-indian-ginseng-poison-gooseberry-or.jpg?s=612x612&w=0&k=20&c=dpgMh_ZgDzz2sZniGCzd5NBa0iAn7zBkjBya46YylyI=", description: "Boosts immunity and reduces stress." },
+    { id: 2, name: "Brahmi", price: 249, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpVj_2o6-YU1W4yhgDtzLYRjpn78H9I6rt-w&s", description: "Enhances brain function and memory." },
+    { id: 3, name: "Mulethi", price: 200, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8oFgmIFs666hZcRX3fo0w63mH12x6KtASBw&s",description: "Clears the throat." },
   ],
   "General Health": [
-    { id: 3, name: "Aspirin", price: 99, image: "/aspirin.jpg", description: "Used to reduce fever and pain." },
-    { id: 4, name: "Ibuprofen", price: 149, image: "/ibuprofen.jpg", description: "Relieves pain, fever, and inflammation." },
+    { id: 4, name: "Aspirin", price: 99, image: "https://thumbs.dreamstime.com/b/aspirin-18931443.jpg", description: "Used to reduce fever and pain." },
+    { id: 5, name: "Ibuprofen", price: 149, image: "https://media.istockphoto.com/id/1359178057/photo/ibuprofen-pill-box-box-paper-blister-tablets.jpg?s=612x612&w=0&k=20&c=iqdliihgmXPtkeKW8NX_YprRGdoh1d-bdcO8sw1Tsmw=", description: "Relieves pain, fever, and inflammation." },
+    { id: 6, name: "Multivitamins", price: 200, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPIV5gfhGaagJrubSkcF2u_sXdYdDGAg3esA&s", description: "Used to provide essential vitamins" },
   ],
 };
 
@@ -145,11 +147,11 @@ export default function Home() {
           <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
             <h2 className="text-xl font-bold text-center">Scan & Pay via UPI</h2>
             <img
-              src="./payment.jpg"
+              src="..//upi.png"
               alt="UPI QR Code"
               className="w-48 h-48 mx-auto my-4"
             />
-            <p className="text-gray-400 text-center">Pay ₹{totalPrice} to <b>yournumber@paytm</b></p>
+            <p className="text-gray-400 text-center">Pay ₹{totalPrice} to <b>7532852184@paytm</b></p>
             <p className="text-gray-500 text-sm text-center">After payment, share the screenshot.</p>
             {deliveryDate && <p className="text-green-400 text-center">Estimated Delivery: {deliveryDate}</p>}
             <button
