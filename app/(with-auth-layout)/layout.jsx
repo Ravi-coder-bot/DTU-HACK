@@ -60,7 +60,7 @@ export default function RootLayout({ children }) {
           <NavItem href="/live-metrics" icon={<FaHeartbeat />} label="Live Metrics" isOpen={isOpen} />
           <NavItem href="/Xverse" icon={<FaLaptopMedical />} label="3D Xverse" isOpen={isOpen} />
           <NavItem href="/ai-insights" icon={<FaRobot />} label="AI Insights" isOpen={isOpen} />
-          <NavItem href="/doctor-consult" icon={<FaUserMd />} label="Consultation" isOpen={isOpen} />
+          <NavItem href="/booking" icon={<FaUserMd />} label="Consultation" isOpen={isOpen} />
           <NavItem href="/community" icon={<FaUsers />} label="Community" isOpen={isOpen} />
           <NavItem href="/Veda-shop" icon={<FaShoppingCart />} label="Veda Store" isOpen={isOpen} />
           <NavItem href="/medical-history" icon={<FaClipboardList />} label="Medical History" isOpen={isOpen} />

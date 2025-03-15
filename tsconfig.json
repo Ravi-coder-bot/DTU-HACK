@@ -28,7 +28,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-, "app/(with-auth-layout)/doctor-consult/page.jsx"  ],
+, "app/(with-auth-layout)/doctor-consult/page.tsx"  ],
   "exclude": [
     "node_modules"
   ]
