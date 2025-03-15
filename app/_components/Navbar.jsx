@@ -45,8 +45,8 @@ const Navbar = () => {
               <h1 className={`text-2xl font-bold tracking-tight transition-all duration-300 ${
                 scrolled ? "scale-90" : ""
               }`}>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-900 to-green-300">Clean</span>
-                <span className="text-green-300">Yuva</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-900 to-blue-300">Health</span>
+                <span className="text-blue-300">Sync</span>
               </h1>
             </a>
           </div>
@@ -56,25 +56,25 @@ const Navbar = () => {
             <div className="space-x-6">
               <button
                 onClick={() => scrollToSection("about")}
-                className="text-gray-300 hover:text-green-900 transition-colors relative hover:after:w-full after:content-[''] after:h-[2px] after:w-0 after:bg-green-300 after:absolute after:-bottom-1 after:left-0 after:transition-all"
+                className="text-gray-300 hover:text-blue-900 transition-colors relative hover:after:w-full after:content-[''] after:h-[2px] after:w-0 after:bg-blue-300 after:absolute after:-bottom-1 after:left-0 after:transition-all"
               >
                 About
               </button>
               <button
                 onClick={() => scrollToSection("features")}
-                className="text-gray-300 hover:text-green-900 transition-colors relative hover:after:w-full after:content-[''] after:h-[2px] after:w-0 after:bg-green-300 after:absolute after:-bottom-1 after:left-0 after:transition-all"
+                className="text-gray-300 hover:text-blue-900 transition-colors relative hover:after:w-full after:content-[''] after:h-[2px] after:w-0 after:bg-blue-300 after:absolute after:-bottom-1 after:left-0 after:transition-all"
               >
                 Features
               </button>
               <button
                 onClick={() => scrollToSection("how-it-works")}
-                className="text-gray-300 hover:text-green-900 transition-colors relative hover:after:w-full after:content-[''] after:h-[2px] after:w-0 after:bg-green-300 after:absolute after:-bottom-1 after:left-0 after:transition-all"
+                className="text-gray-300 hover:text-blue-900 transition-colors relative hover:after:w-full after:content-[''] after:h-[2px] after:w-0 after:bg-blue-300 after:absolute after:-bottom-1 after:left-0 after:transition-all"
               >
                 How It Works
               </button>
               <button
                 onClick={() => scrollToSection("team")}
-                className="text-gray-300 hover:text-green-900 transition-colors relative hover:after:w-full after:content-[''] after:h-[2px] after:w-0 after:bg-green-300 after:absolute after:-bottom-1 after:left-0 after:transition-all"
+                className="text-gray-300 hover:text-blue-900 transition-colors relative hover:after:w-full after:content-[''] after:h-[2px] after:w-0 after:bg-blue-300 after:absolute after:-bottom-1 after:left-0 after:transition-all"
               >
                 Team
               </button>
@@ -85,13 +85,13 @@ const Navbar = () => {
                 href="https://github.com/Ravi-coder-bot"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center text-green-900 hover:text-green-900 transition-colors border border-gray-700 hover:border-green-900 rounded-full px-4 py-1"
+                className="flex items-center text-blue-900 hover:text-blue-900 transition-colors border border-gray-700 hover:border-blue-900 rounded-full px-4 py-1"
               >
                 <Star className="h-4 w-4 mr-1" />
                 Star Repo
               </a>
               <button
-                className="bg-gradient-to-r from-green-900 to-green-300 hover:from-green-400 hover:to-green-600 text-white rounded-full px-6 py-2 shadow-lg shadow-green-500/20 flex items-center transition-transform hover:scale-105"
+                className="bg-gradient-to-r from-blue-900 to-blue-300 hover:from-blue-400 hover:to-blue-600 text-white rounded-full px-6 py-2 shadow-lg shadow-blue-500/20 flex items-center transition-transform hover:scale-105"
                 onClick={() => (window.location.href = "/dashboard")}
               >
                 Get Started
@@ -122,25 +122,25 @@ const Navbar = () => {
         <div className="container mx-auto px-4 py-4 space-y-4">
           <button
             onClick={() => scrollToSection("about")}
-            className="block w-full text-left py-2 text-gray-300 hover:text-green-900 transition-colors border-b border-gray-800"
+            className="block w-full text-left py-2 text-gray-300 hover:text-blue-900 transition-colors border-b border-gray-800"
           >
             About
           </button>
           <button
             onClick={() => scrollToSection("features")}
-            className="block w-full text-left py-2 text-gray-300 hover:text-green-900 transition-colors border-b border-gray-800"
+            className="block w-full text-left py-2 text-gray-300 hover:text-blue-900 transition-colors border-b border-gray-800"
           >
             Features
           </button>
           <button
             onClick={() => scrollToSection("how-it-works")}
-            className="block w-full text-left py-2 text-gray-300 hover:text-green-900 transition-colors border-b border-gray-800"
+            className="block w-full text-left py-2 text-gray-300 hover:text-blue-900 transition-colors border-b border-gray-800"
           >
             How It Works
           </button>
           <button
             onClick={() => scrollToSection("team")}
-            className="block w-full text-left py-2 text-gray-300 hover:text-green-900 transition-colors border-b border-gray-800"
+            className="block w-full text-left py-2 text-gray-300 hover:text-blue-900 transition-colors border-b border-gray-800"
           >
             Team
           </button>
@@ -148,13 +148,13 @@ const Navbar = () => {
             href="https://github.com/Ravi-coder-bot"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center py-2 text-gray-300 hover:text-green-900 transition-colors"
+            className="flex items-center py-2 text-gray-300 hover:text-blue-900 transition-colors"
           >
             <Star className="h-4 w-4 mr-1" />
             Star Repo
           </a>
           <button
-            className="w-full bg-gradient-to-r from-green-900 to-indigo-300 hover:from-green-400 hover:to-green-300 text-white rounded-full py-2 shadow-lg shadow-green-500/20 flex items-center justify-center"
+            className="w-full bg-gradient-to-r from-blue-900 to-indigo-300 hover:from-blue-400 hover:to-blue-300 text-white rounded-full py-2 shadow-lg shadow-blue-500/20 flex items-center justify-center"
             onClick={() => (window.location.href = "/dashboard")}
           >
             Get Started
