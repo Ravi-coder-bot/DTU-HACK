@@ -1,14 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import axios, { AxiosError } from "axios";
+import axios from "axios";
 
 export default function DoctorConsultPage() {
   const [message, setMessage] = useState("");
-  const [chatHistory, setChatHistory] = useState<{ role: string; content: string }[]>([]);
+  const [chatHistory, setChatHistory] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!message.trim()) return;
 
@@ -16,12 +16,11 @@ export default function DoctorConsultPage() {
     setLoading(true);
 
     try {
-      const response = await axios.post<{ response: string }>("/api/gemini", { message });
+      const response = await axios.post("/api/gemini", { message });
       const botResponse = response.data.response;
       setChatHistory((prev) => [...prev, { role: "bot", content: botResponse }]);
-    } catch (error: AxiosError) {
-      console.error("Full Axios error:", error);
-      console.error("Axios error details:", error.response?.data || error.message);
+    } catch (error) {
+      console.error("Error:", error);
       setChatHistory((prev) => [
         ...prev,
         { role: "bot", content: "Error: Unable to fetch response. Please try again." },
@@ -35,14 +34,12 @@ export default function DoctorConsultPage() {
   return (
     <div className="max-w-2xl mx-auto p-6 bg-gray-900 text-white rounded-lg shadow-lg">
       <h1 className="text-2xl font-bold mb-4 text-center">MrDocto</h1>
-
+      
       <div className="h-96 overflow-y-auto mb-4 p-4 bg-gray-800 rounded-lg">
         {chatHistory.map((entry, index) => (
           <div
             key={index}
-            className={`mb-2 p-3 rounded-lg ${
-              entry.role === "user" ? "bg-blue-600 text-right" : "bg-gray-700 text-left"
-            }`}
+            className={`mb-2 p-3 rounded-lg ${entry.role === "user" ? "bg-blue-600 text-right" : "bg-gray-700 text-left"}`}
           >
             <p>{entry.content}</p>
           </div>
