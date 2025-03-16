@@ -1,8 +1,16 @@
 "use client";
 import React from "react";
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls, useGLTF } from "@react-three/drei";
 import Navbar from "./Navbar";
 import { TextGenerateEffect } from "../../components/ui/TextGenerateEffect";
 import { ChevronRight, Star } from "lucide-react";
+
+// 3D Model Component
+const Model = () => {
+  const { scene } = useGLTF("/models/heart.glb"); // Ensure correct path
+  return <primitive object={scene} scale={0.8} />;
+};
 
 const LandingPage = () => {
   return (
@@ -22,6 +30,7 @@ const LandingPage = () => {
       <div className="relative min-h-screen flex flex-col justify-center text-center px-4">
         <section id="main">
           <div className="h-full w-full flex">
+            {/* Left Text Section */}
             <div className="h-full w-[50%] flex flex-col justify-center items-center text-center">
               <div className="p-5">
                 <TextGenerateEffect className="text-3xl font-extrabold sm:text-6xl text-blue-300 drop-shadow-lg" words="Innovating Healthcare for Better Lives" />
@@ -29,10 +38,10 @@ const LandingPage = () => {
                   HealthSync is your one-stop platform for real-time health monitoring, AI-driven insights, and seamless doctor consultations.
                 </p>
 
-                {/* Centering Buttons in the 50% Div */}
+                {/* Centering Buttons */}
                 <div className="flex justify-center items-center mt-5 space-x-4">
                   <a
-                    href="https://github.com/Ravi-coder-bot"
+                    href="https://github.com/Ravi-coder-bot/DTU-HACK"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center text-blue-400 hover:text-blue-500 transition-colors border border-gray-500 hover:border-blue-500 rounded-full px-4 py-2 shadow-lg shadow-blue-400/50"
@@ -50,9 +59,18 @@ const LandingPage = () => {
                 </div>
               </div>
             </div>
-            <div>
-              {/* Future: Place a 3D Globe or Animation Here */}
+
+            {/* Right Section: 3D Model */}
+            <div className="w-[50%] h-[500px] flex justify-center items-center">
+              <Canvas camera={{ position: [0, 6, 9], fov: 50 }}> 
+                {/* Adjusted camera position for zoom out */}
+                <ambientLight intensity={0.6} />
+                <directionalLight position={[3, 3, 3]} intensity={1} />
+                <OrbitControls enableZoom={true} />
+                <Model />
+              </Canvas>
             </div>
+
           </div>
         </section>
       </div>

@@ -82,7 +82,7 @@ const Navbar = () => {
 
             <div className="flex items-center space-x-4">
               <a
-                href="https://github.com/Ravi-coder-bot"
+                href="https://github.com/Ravi-coder-bot/DTU-HACK"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center text-blue-900 hover:text-blue-900 transition-colors border border-gray-700 hover:border-blue-900 rounded-full px-4 py-1"
@@ -145,7 +145,7 @@ const Navbar = () => {
             Team
           </button>
           <a
-            href="https://github.com/Ravi-coder-bot"
+            href="https://github.com/Ravi-coder-bot/DTU-HACK"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center py-2 text-gray-300 hover:text-blue-900 transition-colors"

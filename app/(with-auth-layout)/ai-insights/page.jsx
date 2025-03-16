@@ -1,9 +1,9 @@
 import React from 'react'
 
-const AiInsights = () => {
+const MapPage = () => {
   return (
-    <div>AiInsights</div>
+    <div>MapPage</div>
   )
 }
 
-export default AiInsights
+export default MapPage
