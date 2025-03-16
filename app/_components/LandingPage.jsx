@@ -41,7 +41,7 @@ const LandingPage = () => {
                 {/* Centering Buttons */}
                 <div className="flex justify-center items-center mt-5 space-x-4">
                   <a
-                    href="https://github.com/Ravi-coder-bot"
+                    href="https://github.com/Ravi-coder-bot/DTU-HACK"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center text-blue-400 hover:text-blue-500 transition-colors border border-gray-500 hover:border-blue-500 rounded-full px-4 py-2 shadow-lg shadow-blue-400/50"
