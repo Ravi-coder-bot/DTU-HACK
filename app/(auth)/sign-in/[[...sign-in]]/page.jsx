@@ -27,12 +27,12 @@ export default function Page() {
         </a>
 
         <h2 className="mt-6 text-2xl font-bold text-white sm:text-3xl md:text-4xl">
-          Welcome to Skill Up 📖💡💻
+          Welcome to HealthSync ❤➕
         </h2>
 
         <p className="mt-4 leading-relaxed text-white/90">
-          Unlock your potential with our AI-powered course generator. Tailor your
-          learning path to your goals and interests.
+          HealthSync is your one-stop platform for real-time health monitoring,
+          AI-driven insights, and seamless doctor consultations.
         </p>
       </div>
     </section>
