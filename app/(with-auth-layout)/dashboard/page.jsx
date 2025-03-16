@@ -1,4 +1,5 @@
 "use client";
+import { useRouter } from "next/navigation";
 import React from "react";
 import { motion } from "framer-motion";
 import { HeartPulse, Activity, ShieldCheck, UserPlus } from "lucide-react";
@@ -42,9 +43,9 @@ const Dashboard = () => {
 
       {/* Bottom Buttons */}
       <motion.div className="mt-10 flex justify-center gap-4">
-        <Button label="Live Monitoring" />
-        <Button label="Health Reports" />
-        <Button label="Settings" />
+      <Button label="Live Monitoring" path="/live-metrics" />
+  <Button label="Health Reports" path="/health-reports" />
+  <Button label="Settings" path="/settings" />
       </motion.div>
     </motion.div>
   );
@@ -75,15 +76,21 @@ const ChartCard = ({ title, chart }) => (
   </motion.div>
 );
 
-const Button = ({ label }) => (
-  <motion.button
-    whileHover={{ scale: 1.1 }}
-    whileTap={{ scale: 0.9 }}
-    className="bg-gradient-to-r from-[#4F46E5] to-[#F43F5E] px-6 py-3 rounded-lg text-lg font-semibold"
-  >
-    {label}
-  </motion.button>
-);
+const Button = ({ label, path }) => {
+  const router = useRouter();
+
+  return (
+    <motion.button
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.9 }}
+      className="bg-gradient-to-r from-[#4F46E5] to-[#F43F5E] px-6 py-3 rounded-lg text-lg font-semibold"
+      onClick={() => router.push(path)}
+    >
+      {label}
+    </motion.button>
+  );
+};
+
 
 const CircularProgress = ({ value }) => (
   <motion.div
