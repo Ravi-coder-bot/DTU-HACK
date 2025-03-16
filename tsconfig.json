@@ -28,7 +28,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-, "app/(with-auth-layout)/doctor-consult/page.tsx", "app/(with-auth-layout)/live-metrics/page.jsx", "app/api/live-metrics/route.js"  ],
+, "app/(with-auth-layout)/doctor-consult/page.jsx", "app/(with-auth-layout)/live-metrics/page.jsx", "app/api/live-metrics/route.js", "app/(with-auth-layout)/booking/page.jsx"  ],
   "exclude": [
     "node_modules"
   ]

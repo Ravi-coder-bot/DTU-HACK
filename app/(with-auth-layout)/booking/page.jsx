@@ -1,22 +1,22 @@
 "use client";
 
 import { useState } from "react";
-import axios, { AxiosError } from "axios";
+import axios from "axios";
 
 export default function DoctorBookingPage() {
   // Doctor Booking State
   const [searchCategory, setSearchCategory] = useState("");
-  const [selectedDoctor, setSelectedDoctor] = useState<any>(null);
+  const [selectedDoctor, setSelectedDoctor] = useState(null);
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
-  const [bookedAppointments, setBookedAppointments] = useState<any[]>([]);
+  const [bookedAppointments, setBookedAppointments] = useState([]);
   const [showAppointments, setShowAppointments] = useState(false);
 
   // Chatbot State
   const [message, setMessage] = useState("");
-  const [chatHistory, setChatHistory] = useState<{ role: string; content: string }[]>([]);
+  const [chatHistory, setChatHistory] = useState([]);
   const [loading, setLoading] = useState(false);
   const [isChatVisible, setIsChatVisible] = useState(false);
 
@@ -62,7 +62,7 @@ export default function DoctorBookingPage() {
     : doctors;
 
   // Doctor Booking Submit Handler
-  const handleBookingSubmit = async (e: React.FormEvent) => {
+  const handleBookingSubmit = async (e) => {
     e.preventDefault();
     if (!selectedDoctor || !date || !time) {
       alert("Please select a doctor and fill in all fields.");
@@ -86,7 +86,7 @@ export default function DoctorBookingPage() {
       setDate("");
       setTime("");
       setTimeout(() => setSelectedDoctor(null), 2000);
-    } catch (error: any) {
+    } catch (error) {
       console.error("Booking error:", error);
       alert(error.response?.data?.details || "Failed to book appointment. Please try again.");
     } finally {
@@ -95,7 +95,7 @@ export default function DoctorBookingPage() {
   };
 
   // Chatbot Submit Handler
-  const handleChatSubmit = async (e: React.FormEvent) => {
+  const handleChatSubmit = async (e) => {
     e.preventDefault();
     if (!message.trim()) return;
 
@@ -103,10 +103,10 @@ export default function DoctorBookingPage() {
     setLoading(true);
 
     try {
-      const response = await axios.post<{ response: string }>("/api/gemini", { message });
+      const response = await axios.post("/api/gemini", { message });
       const botResponse = response.data.response;
       setChatHistory((prev) => [...prev, { role: "bot", content: botResponse }]);
-    } catch (error: AxiosError<{ error: string; details?: string }>) {
+    } catch (error) {
       const errorMessage =
         error.response?.data?.details ||
         error.response?.data?.error ||
@@ -223,7 +223,6 @@ export default function DoctorBookingPage() {
                     type="date"
                     id="date"
                     value={date}
-
                     onChange={(e) => setDate(e.target.value)}
                     min={new Date().toISOString().split("T")[0]}
                     className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800"
