@@ -28,7 +28,7 @@ export default function RootLayout({ children }) {
       <aside
         className={`${
           isOpen ? "w-64" : "w-20"
-        } transition-all duration-300 bg-gradient-to-r from-[#1E3A8A] to-[#0A1F44] shadow-lg`}
+        } fixed top-0 left-0 h-screen transition-all duration-300 bg-gradient-to-r from-[#1E3A8A] to-[#0A1F44] shadow-lg z-20`}
       >
         {/* Sidebar Toggle Button */}
         <div className="sticky top-0 px-4 py-3 flex items-center justify-between">
@@ -75,7 +75,7 @@ export default function RootLayout({ children }) {
       </aside>
 
       {/* Main Content */}
-      <div className="flex-1 flex flex-col">
+      <div className={`flex-1 flex flex-col ${isOpen ? "ml-64" : "ml-20"} transition-all duration-300`}>
         {/* Navbar */}
         <nav className="z-10 sticky top-0 bg-gradient-to-r from-[#1E3A8A] to-[#0A1F44] p-4 flex justify-between items-center shadow-lg">
   <h1 className="text-lg font-semibold">Dashboard</h1>

@@ -123,4 +123,7 @@
   body {
     @apply bg-background text-foreground;
   }
+  html, body {
+    @apply bg-gradient-to-br from-[#0A1F44] to-[#1E3A8A] text-foreground min-h-screen;
+  }
 }

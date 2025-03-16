@@ -28,9 +28,9 @@ export default function RootLayout({ children }) {
   return (
     <ClerkProvider>
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+    <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gradient-to-br from-[#0A1F44] to-[#1E3A8A] min-h-screen`}
+        >
         {children}
       </body>
     </html>
