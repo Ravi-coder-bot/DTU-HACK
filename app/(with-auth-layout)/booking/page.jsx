@@ -2,6 +2,24 @@
 
 import { useState } from "react";
 import axios from "axios";
+import Image from "next/image";
+import doctor1 from "../../../public/assets/doctor1.jpg";
+import doctor2 from "../../../public/assets/doctor2.jpg";
+import doctor3 from "../../../public/assets/doctor3.jpg";
+import doctor4 from "../../../public/assets/doctor4.jpg";
+import doctor5 from "../../../public/assets/doctor5.jpg";
+import doctor6 from "../../../public/assets/doctor6.jpg";
+import doctor7 from "../../../public/assets/doctor7.jpg";
+import doctor8 from "../../../public/assets/doctor8.jpg";
+import doctor9 from "../../../public/assets/doctor9.jpg";
+import doctor1f from "../../../public/assets/doctor1f.jpg";
+import doctor2f from "../../../public/assets/doctor2f.jpg";
+import doctor3f from "../../../public/assets/doctor3f.jpg";
+import doctor4f from "../../../public/assets/doctor4f.jpg";
+import doctor5f from "../../../public/assets/doctor5f.jpg";
+import doctor6f from "../../../public/assets/doctor6f.jpg";
+import doctor7f from "../../../public/assets/doctor7f.jpg";
+
 
 export default function DoctorBookingPage() {
   // Doctor Booking State
@@ -35,26 +53,26 @@ export default function DoctorBookingPage() {
   ];
 
   const doctors = [
-    { id: 1, name: "Dr. Vikram Singh", specialty: "General Physician", description: "Expert in family medicine.", experience: 15, photo: "https://via.placeholder.com/150" },
-    { id: 2, name: "Dr. Priya Sharma", specialty: "Psychiatrist", description: "Specializes in mental health disorders.", experience: 12, photo: "https://via.placeholder.com/150" },
-    { id: 3, name: "Dr. Anil Gupta", specialty: "Cardiologist", description: "Focuses on heart conditions.", experience: 18, photo: "https://via.placeholder.com/150" },
-    { id: 4, name: "Dr. Neha Patel", specialty: "Ayurvedic Doctor", description: "Traditional holistic healing expert.", experience: 10, photo: "https://via.placeholder.com/150" },
-    { id: 5, name: "Dr. Ritu Desai", specialty: "Dermatologist", description: "Skin care and cosmetic procedures.", experience: 8, photo: "https://via.placeholder.com/150" },
-    { id: 6, name: "Dr. Sanjay Kumar", specialty: "Neurologist", description: "Treats brain and nerve disorders.", experience: 20, photo: "https://via.placeholder.com/150" },
-    { id: 7, name: "Dr. Meena Joshi", specialty: "Pediatrician", description: "Caring for children’s health.", experience: 14, photo: "https://via.placeholder.com/150" },
-    { id: 8, name: "Dr. Rajesh Yadav", specialty: "Orthopedic Surgeon", description: "Bone and joint specialist.", experience: 16, photo: "https://via.placeholder.com/150" },
-    { id: 9, name: "Dr. Anjali Verma", specialty: "Gynecologist", description: "Women’s reproductive health expert.", experience: 11, photo: "https://via.placeholder.com/150" },
-    { id: 10, name: "Dr. Amit Mishra", specialty: "Dentist", description: "Dental care and surgery.", experience: 9, photo: "https://via.placeholder.com/150" },
-    { id: 11, name: "Dr. Kavita Nair", specialty: "Dermatologist", description: "Advanced skin treatments.", experience: 7, photo: "https://via.placeholder.com/150" },
-    { id: 12, name: "Dr. Rohan Kapoor", specialty: "General Physician", description: "Primary care specialist.", experience: 13, photo: "https://via.placeholder.com/150" },
-    { id: 13, name: "Dr. Sunil Chopra", specialty: "Ayurvedic Doctor", description: "Herbal medicine practitioner.", experience: 12, photo: "https://via.placeholder.com/150" },
-    { id: 14, name: "Dr. Deepak Rana", specialty: "Cardiologist", description: "Heart disease management.", experience: 17, photo: "https://via.placeholder.com/150" },
-    { id: 15, name: "Dr. Manoj Thakur", specialty: "Neurologist", description: "Expert in neurological conditions.", experience: 19, photo: "https://via.placeholder.com/150" },
-    { id: 16, name: "Dr. Shalini Iyer", specialty: "Psychiatrist", description: "Mental wellness advocate.", experience: 10, photo: "https://via.placeholder.com/150" },
-    { id: 17, name: "Dr. Arjun Malhotra", specialty: "Orthopedic Surgeon", description: "Joint replacement specialist.", experience: 15, photo: "https://via.placeholder.com/150" },
-    { id: 18, name: "Dr. Pooja Saxena", specialty: "Pediatrician", description: "Pediatric care expert.", experience: 8, photo: "https://via.placeholder.com/150" },
-    { id: 19, name: "Dr. Rekha Bhatt", specialty: "Gynecologist", description: "Focuses on women’s health.", experience: 14, photo: "https://via.placeholder.com/150" },
-    { id: 20, name: "Dr. Naveen Reddy", specialty: "Dentist", description: "Cosmetic dentistry specialist.", experience: 11, photo: "https://via.placeholder.com/150" },
+    { id: 1, name: "Dr. Vikram Singh", specialty: "General Physician", description: "Expert in family medicine.", experience: 15, photo: doctor1 },
+    { id: 2, name: "Dr. Priya Sharma", specialty: "Psychiatrist", description: "Specializes in mental health disorders.", experience: 12, photo: doctor2 },
+    { id: 3, name: "Dr. Anil Gupta", specialty: "Cardiologist", description: "Focuses on heart conditions.", experience: 18, photo: doctor3 },
+    { id: 4, name: "Dr. Neha Patel", specialty: "Ayurvedic Doctor", description: "Traditional holistic healing expert.", experience: 10, photo: doctor4 },
+    { id: 5, name: "Dr. Ritu Desai", specialty: "Dermatologist", description: "Skin care and cosmetic procedures.", experience: 8, photo: doctor5 },
+    { id: 6, name: "Dr. Sanjay Kumar", specialty: "Neurologist", description: "Treats brain and nerve disorders.", experience: 20, photo: doctor6 },
+    { id: 7, name: "Dr. Meena Joshi", specialty: "Pediatrician", description: "Caring for children’s health.", experience: 14, photo: doctor7 },
+    { id: 8, name: "Dr. Rajesh Yadav", specialty: "Orthopedic Surgeon", description: "Bone and joint specialist.", experience: 16, photo: doctor8 },
+    { id: 9, name: "Dr. Anjali Verma", specialty: "Gynecologist", description: "Women’s reproductive health expert.", experience: 11, photo: doctor9 },
+    { id: 10, name: "Dr. Amit Mishra", specialty: "Dentist", description: "Dental care and surgery.", experience: 9, photo: doctor1f },
+    { id: 11, name: "Dr. Kavita Nair", specialty: "Dermatologist", description: "Advanced skin treatments.", experience: 7, photo: doctor2f },
+    { id: 12, name: "Dr. Rohan Kapoor", specialty: "General Physician", description: "Primary care specialist.", experience: 13, photo: doctor3f },
+    { id: 13, name: "Dr. Sunil Chopra", specialty: "Ayurvedic Doctor", description: "Herbal medicine practitioner.", experience: 12, photo: doctor4f },
+    { id: 14, name: "Dr. Deepak Rana", specialty: "Cardiologist", description: "Heart disease management.", experience: 17, photo: doctor5f },
+    { id: 15, name: "Dr. Manoj Thakur", specialty: "Neurologist", description: "Expert in neurological conditions.", experience: 19, photo: doctor6f },
+    { id: 16, name: "Dr. Shalini Iyer", specialty: "Psychiatrist", description: "Mental wellness advocate.", experience: 10, photo: doctor7f },
+    { id: 17, name: "Dr. Arjun Malhotra", specialty: "Orthopedic Surgeon", description: "Joint replacement specialist.", experience: 15, photo: doctor1 },
+    { id: 18, name: "Dr. Pooja Saxena", specialty: "Pediatrician", description: "Pediatric care expert.", experience: 8, photo: doctor2 },
+    { id: 19, name: "Dr. Rekha Bhatt", specialty: "Gynecologist", description: "Focuses on women’s health.", experience: 14, photo: doctor3 },
+    { id: 20, name: "Dr. Naveen Reddy", specialty: "Dentist", description: "Cosmetic dentistry specialist.", experience: 11, photo: doctor4 },
   ];
 
   const filteredDoctors = searchCategory && searchCategory !== "All"
@@ -161,55 +179,63 @@ export default function DoctorBookingPage() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {filteredDoctors.map((doc) => (
-            <div
-              key={doc.id}
-              onClick={() => setSelectedDoctor(doc)}
-              className="bg-white rounded-lg shadow-md p-4 cursor-pointer hover:shadow-lg transition-shadow"
-            >
-              <img
-                src={doc.photo}
-                alt={doc.name}
-                className="w-full h-40 object-cover rounded-md mb-4"
-              />
-              <h2 className="text-lg font-semibold text-gray-800">{doc.name}</h2>
-              <p className="text-sm text-gray-600">{doc.specialty}</p>
-            </div>
-          ))}
-        </div>
+  {filteredDoctors.map((doc) => (
+    <div
+      key={doc.id}
+      onClick={() => setSelectedDoctor(doc)}
+      className="bg-white rounded-lg shadow-md p-4 cursor-pointer hover:shadow-lg transition-shadow"
+    >
+      <div className="w-full h-40 relative rounded-md mb-4">
+        <Image
+          src={doc.photo} // Use the imported image
+          alt={doc.name}
+          layout="fill" // Fill the container
+          objectFit="cover" // Ensure the image covers the container
+          className="rounded-md"
+        />
+      </div>
+      <h2 className="text-lg font-semibold text-gray-800">{doc.name}</h2>
+      <p className="text-sm text-gray-600">{doc.specialty}</p>
+    </div>
+  ))}
+</div>
 
-        {/* Booking Modal */}
-        {selectedDoctor && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-            <div className="bg-white rounded-lg p-6 max-w-md w-full mx-4">
-              <div className="flex justify-between items-center mb-4">
-                <h2 className="text-xl font-bold text-gray-800">{selectedDoctor.name}</h2>
-                <button
-                  onClick={() => setSelectedDoctor(null)}
-                  className="text-gray-600 hover:text-gray-800"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="w-6 h-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  </svg>
-                </button>
-              </div>
+{/* Booking Modal */}
+{selectedDoctor && (
+  <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <div className="bg-white rounded-lg p-6 max-w-md w-full mx-4">
+      <div className="flex justify-between items-center mb-4">
+        <h2 className="text-xl font-bold text-gray-800">{selectedDoctor.name}</h2>
+        <button
+          onClick={() => setSelectedDoctor(null)}
+          className="text-gray-600 hover:text-gray-800"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-6 h-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+      </div>
 
-              <img
-                src={selectedDoctor.photo}
-                alt={selectedDoctor.name}
-                className="w-32 h-32 object-cover rounded-full mx-auto mb-4"
-              />
+      <div className="w-32 h-32 relative mx-auto mb-4">
+        <Image
+          src={selectedDoctor.photo} // Use the imported image
+          alt={selectedDoctor.name}
+          layout="fill" // Fill the container
+          objectFit="cover" // Ensure the image covers the container
+          className="rounded-full"
+        />
+      </div>
               <p className="text-gray-700 mb-2"><strong>Specialty:</strong> {selectedDoctor.specialty}</p>
               <p className="text-gray-700 mb-2"><strong>Description:</strong> {selectedDoctor.description}</p>
               <p className="text-gray-700 mb-4"><strong>Experience:</strong> {selectedDoctor.experience} years</p>
