@@ -1,6 +1,6 @@
 import { useContext } from 'react';
-import { CartContext } from '../';
-import ProductCard from '../components/ProductCard';
+import { CartContext } from '../context/CartContext';
+import ProductCard from '../context/components/ProductCard';
 
 const products = [
   { id: 1, name: "Aspirin", price: 99, image: "/aspirin.png", description: "Used to reduce fever and pain." },
