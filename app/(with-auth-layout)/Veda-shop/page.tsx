@@ -147,7 +147,7 @@ export default function Home() {
           <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
             <h2 className="text-xl font-bold text-center">Scan & Pay via UPI</h2>
             <img
-              src="..//upi.png"
+              src="https://i.postimg.cc/FFkzGzRv/Whats-App-Image-2025-03-16-at-14-08-35-3aaf8966.jpg"
               alt="UPI QR Code"
               className="w-48 h-48 mx-auto my-4"
             />
