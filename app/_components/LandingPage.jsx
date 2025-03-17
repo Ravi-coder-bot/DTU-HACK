@@ -115,7 +115,7 @@ const LandingPage = () => {
                 {/* Adjusted camera position for zoom out */}
                 <ambientLight intensity={0.6} />
                 <directionalLight position={[3, 3, 3]} intensity={1} />
-                <OrbitControls enableZoom={true} />
+                <OrbitControls enableZoom={false} />
                 <Model />
               </Canvas>
             </div>
