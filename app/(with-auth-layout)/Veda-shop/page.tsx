@@ -13,7 +13,7 @@ const products: Record<string, Product[]> = {
   Ayurveda: [
     { id: 1, name: "Ashwagandha", price: 199, image: "https://media.istockphoto.com/id/1286731715/photo/root-withania-somnifera-known-commonly-as-ashwagandha-indian-ginseng-poison-gooseberry-or.jpg?s=612x612&w=0&k=20&c=dpgMh_ZgDzz2sZniGCzd5NBa0iAn7zBkjBya46YylyI=", description: "Boosts immunity and reduces stress." },
     { id: 2, name: "Brahmi", price: 249, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpVj_2o6-YU1W4yhgDtzLYRjpn78H9I6rt-w&s", description: "Enhances brain function and memory." },
-    { id: 3, name: "Mulethi", price: 200, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8oFgmIFs666hZcRX3fo0w63mH12x6KtASBw&s",description: "Clears the throat." },
+    { id: 3, name: "Mulethi", price: 200, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8oFgmIFs666hZcRX3fo0w63mH12x6KtASBw&s", description: "Clears the throat." },
   ],
   "General Health": [
     { id: 4, name: "Aspirin", price: 99, image: "https://thumbs.dreamstime.com/b/aspirin-18931443.jpg", description: "Used to reduce fever and pain." },
@@ -29,6 +29,7 @@ export default function Home() {
   const [address, setAddress] = useState("");
   const [showQR, setShowQR] = useState(false);
   const [deliveryDate, setDeliveryDate] = useState<string | null>(null);
+  const [referenceId, setReferenceId] = useState(""); // New state for reference ID
 
   const addToCart = (product: Product) => {
     setCart([...cart, product]);
@@ -58,6 +59,19 @@ export default function Home() {
     setDeliveryDate(estimatedDate.toDateString());
     setShowCheckout(false);
     setShowQR(true);
+  };
+
+  const handleDone = () => {
+    if (!referenceId) {
+      alert("Please enter your reference ID.");
+      return;
+    }
+    // Here you can add logic to handle the reference ID (e.g., send it to a server)
+    console.log("Reference ID submitted:", referenceId);
+    setShowQR(false); // Close the QR modal after submission
+    setCart([]); // Optionally clear the cart
+    setAddress(""); // Clear address
+    setReferenceId(""); // Clear reference ID
   };
 
   return (
@@ -154,6 +168,24 @@ export default function Home() {
             <p className="text-gray-400 text-center">Pay ₹{totalPrice} to <b>7532852184@paytm</b></p>
             <p className="text-gray-500 text-sm text-center">After payment, share the screenshot.</p>
             {deliveryDate && <p className="text-green-400 text-center">Estimated Delivery: {deliveryDate}</p>}
+            
+            {/* New Reference ID Input and Done Button */}
+            <div className="mt-4">
+              <input
+                type="text"
+                className="w-full p-2 bg-gray-700 rounded text-white"
+                placeholder="Enter Reference ID"
+                value={referenceId}
+                onChange={(e) => setReferenceId(e.target.value)}
+              />
+              <button
+                onClick={handleDone}
+                className="mt-3 bg-blue-500 hover:bg-blue-600 px-5 py-2 text-white rounded w-full"
+              >
+                Done
+              </button>
+            </div>
+
             <button
               onClick={() => setShowQR(false)}
               className="mt-3 bg-red-500 hover:bg-red-600 px-5 py-2 text-white rounded w-full"
