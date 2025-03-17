@@ -20,7 +20,6 @@ import doctor5f from "../../../public/assets/doctor5f.jpg";
 import doctor6f from "../../../public/assets/doctor6f.jpg";
 import doctor7f from "../../../public/assets/doctor7f.jpg";
 
-
 export default function DoctorBookingPage() {
   // Doctor Booking State
   const [searchCategory, setSearchCategory] = useState("");
@@ -84,6 +83,15 @@ export default function DoctorBookingPage() {
     e.preventDefault();
     if (!selectedDoctor || !date || !time) {
       alert("Please select a doctor and fill in all fields.");
+      return;
+    }
+
+    // Validate time (between 10 AM and 10 PM)
+    const selectedTime = new Date(`1970-01-01T${time}:00`);
+    const minTime = new Date(`1970-01-01T10:00:00`);
+    const maxTime = new Date(`1970-01-01T22:00:00`);
+    if (selectedTime < minTime || selectedTime > maxTime) {
+      alert("Please select a time between 10 AM and 10 PM.");
       return;
     }
 
@@ -179,63 +187,63 @@ export default function DoctorBookingPage() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-  {filteredDoctors.map((doc) => (
-    <div
-      key={doc.id}
-      onClick={() => setSelectedDoctor(doc)}
-      className="bg-white rounded-lg shadow-md p-4 cursor-pointer hover:shadow-lg transition-shadow"
-    >
-      <div className="w-full h-40 relative rounded-md mb-4">
-        <Image
-          src={doc.photo} // Use the imported image
-          alt={doc.name}
-          layout="fill" // Fill the container
-          objectFit="cover" // Ensure the image covers the container
-          className="rounded-md"
-        />
-      </div>
-      <h2 className="text-lg font-semibold text-gray-800">{doc.name}</h2>
-      <p className="text-sm text-gray-600">{doc.specialty}</p>
-    </div>
-  ))}
-</div>
+          {filteredDoctors.map((doc) => (
+            <div
+              key={doc.id}
+              onClick={() => setSelectedDoctor(doc)}
+              className="bg-white rounded-lg shadow-md p-4 cursor-pointer hover:shadow-lg transition-shadow"
+            >
+              <div className="w-full h-40 relative rounded-md mb-4">
+                <Image
+                  src={doc.photo}
+                  alt={doc.name}
+                  layout="fill"
+                  objectFit="cover"
+                  className="rounded-md"
+                />
+              </div>
+              <h2 className="text-lg font-semibold text-gray-800">{doc.name}</h2>
+              <p className="text-sm text-gray-600">{doc.specialty}</p>
+            </div>
+          ))}
+        </div>
 
-{/* Booking Modal */}
-{selectedDoctor && (
-  <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-    <div className="bg-white rounded-lg p-6 max-w-md w-full mx-4">
-      <div className="flex justify-between items-center mb-4">
-        <h2 className="text-xl font-bold text-gray-800">{selectedDoctor.name}</h2>
-        <button
-          onClick={() => setSelectedDoctor(null)}
-          className="text-gray-600 hover:text-gray-800"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-6 h-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
-        </button>
-      </div>
+        {/* Booking Modal */}
+        {selectedDoctor && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+            <div className="bg-white rounded-lg p-6 max-w-md w-full mx-4">
+              <div className="flex justify-between items-center mb-4">
+                <h2 className="text-xl font-bold text-gray-800">{selectedDoctor.name}</h2>
+                <button
+                  onClick={() => setSelectedDoctor(null)}
+                  className="text-gray-600 hover:text-gray-800"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-6 h-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </button>
+              </div>
 
-      <div className="w-32 h-32 relative mx-auto mb-4">
-        <Image
-          src={selectedDoctor.photo} // Use the imported image
-          alt={selectedDoctor.name}
-          layout="fill" // Fill the container
-          objectFit="cover" // Ensure the image covers the container
-          className="rounded-full"
-        />
-      </div>
+              <div className="w-32 h-32 relative mx-auto mb-4">
+                <Image
+                  src={selectedDoctor.photo}
+                  alt={selectedDoctor.name}
+                  layout="fill"
+                  objectFit="cover"
+                  className="rounded-full"
+                />
+              </div>
               <p className="text-gray-700 mb-2"><strong>Specialty:</strong> {selectedDoctor.specialty}</p>
               <p className="text-gray-700 mb-2"><strong>Description:</strong> {selectedDoctor.description}</p>
               <p className="text-gray-700 mb-4"><strong>Experience:</strong> {selectedDoctor.experience} years</p>
@@ -257,16 +265,43 @@ export default function DoctorBookingPage() {
                 </div>
                 <div>
                   <label htmlFor="time" className="block text-sm font-medium text-gray-700 mb-1">
-                    Appointment Time
+                    Appointment Time (10 AM - 10 PM)
                   </label>
-                  <input
-                    type="time"
+                  <select
                     id="time"
                     value={time}
                     onChange={(e) => setTime(e.target.value)}
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800"
+                    size="4" // Show only 4 options at a time
+                    className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm text-gray-800 overflow-y-auto"
                     disabled={isSubmitting}
-                  />
+                  >
+                    <option value="" disabled>Select a time</option>
+                    <option value="10:00">10:00 AM</option>
+                    <option value="10:30">10:30 AM</option>
+                    <option value="11:00">11:00 AM</option>
+                    <option value="11:30">11:30 AM</option>
+                    <option value="12:00">12:00 PM</option>
+                    <option value="12:30">12:30 PM</option>
+                    <option value="13:00">1:00 PM</option>
+                    <option value="13:30">1:30 PM</option>
+                    <option value="14:00">2:00 PM</option>
+                    <option value="14:30">2:30 PM</option>
+                    <option value="15:00">3:00 PM</option>
+                    <option value="15:30">3:30 PM</option>
+                    <option value="16:00">4:00 PM</option>
+                    <option value="16:30">4:30 PM</option>
+                    <option value="17:00">5:00 PM</option>
+                    <option value="17:30">5:30 PM</option>
+                    <option value="18:00">6:00 PM</option>
+                    <option value="18:30">6:30 PM</option>
+                    <option value="19:00">7:00 PM</option>
+                    <option value="19:30">7:30 PM</option>
+                    <option value="20:00">8:00 PM</option>
+                    <option value="20:30">8:30 PM</option>
+                    <option value="21:00">9:00 PM</option>
+                    <option value="21:30">9:30 PM</option>
+                    <option value="22:00">10:00 PM</option>
+                  </select>
                 </div>
                 <button
                   type="submit"
