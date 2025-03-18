@@ -28,7 +28,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-, "app/(with-auth-layout)/doctor-consult/page.jsx", "app/(with-auth-layout)/live-metrics/page.jsx", "app/api/live-metrics/route.js", "app/(with-auth-layout)/booking/page.jsx", "app/(with-auth-layout)/medical-history/page.jsx", "app/(with-auth-layout)/health-insights/page.JSX", "app/(with-auth-layout)/recomendation/page.jsx", "lib/health-analysis.js"  ],
+, "app/(with-auth-layout)/doctor-consult/page.jsx", "app/(with-auth-layout)/live-metrics/page.jsx", "app/api/live-metrics/route.js", "app/(with-auth-layout)/booking/page.jsx", "app/(with-auth-layout)/medical-history/page.jsx", "app/(with-auth-layout)/health-insights/page.JSX", "app/(with-auth-layout)/recomendation/page.jsx", "lib/health-analysis.js", "app/(with-auth-layout)/iot/page.jsx"  ],
   "exclude": [
     "node_modules"
   ]
