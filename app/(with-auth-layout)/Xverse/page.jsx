@@ -1,8 +1,19 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react"; // Ensure React is imported
+import React, { useRef, useState, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+  Brush,
+} from "recharts";
 
 export default function Home() {
   const [selectedOrgan, setSelectedOrgan] = useState("");
@@ -40,11 +51,89 @@ const lungsDiseases = ["Asthma", "Bronchitis", "Lung Cancer"];
 const heartDiseases = ["Heart Attack", "Arrhythmia", "Cardiomyopathy"];
 const kidneyDiseases = ["Kidney Stones", "Chronic Kidney Disease", "Nephritis"];
 
-// Human Model Section (Zoomed Out)
+// Health Data for Line Chart
+const healthData = [
+  { name: "Day 1", oxygen: 95, heartRate: 72, steps: 3000, calories: 500 },
+  { name: "Day 2", oxygen: 96, heartRate: 75, steps: 4500, calories: 600 },
+  { name: "Day 3", oxygen: 94, heartRate: 70, steps: 2000, calories: 400 },
+  { name: "Day 4", oxygen: 97, heartRate: 78, steps: 5000, calories: 700 },
+  { name: "Day 5", oxygen: 98, heartRate: 80, steps: 6000, calories: 800 },
+  { name: "Day 6", oxygen: 99, heartRate: 82, steps: 7000, calories: 900 },
+  { name: "Day 7", oxygen: 97, heartRate: 79, steps: 5500, calories: 750 },
+];
+
+// Human Model Section (Split into two parts: Chart on the left, Model on the right)
 const HumanModelSection = () => (
-  <div className="p-8">
-    <h2 className="text-2xl font-bold text-center mb-4">Human Model</h2>
-    <div className="w-full h-96">
+  <div className="p-8 flex flex-col md:flex-row items-center">
+    {/* Left Side: Interactive Line Chart */}
+    <div className="w-full md:w-1/2 p-4">
+      <h2 className="text-2xl font-bold text-center mb-4">Health Metrics</h2>
+      <ResponsiveContainer width="100%" height={400}>
+        <LineChart
+          data={healthData}
+          margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+        >
+          <CartesianGrid strokeDasharray="3 3" stroke="#555" />
+          <XAxis dataKey="name" stroke="#fff" />
+          <YAxis stroke="#fff" />
+          <Tooltip
+            contentStyle={{
+              backgroundColor: "#333",
+              border: "1px solid #555",
+              borderRadius: "5px",
+              color: "#fff",
+            }}
+          />
+          <Legend
+            wrapperStyle={{
+              paddingTop: "10px",
+              color: "#fff",
+            }}
+          />
+          <Brush dataKey="name" height={20} stroke="#8884d8" fill="#333" />
+          <Line
+            type="monotone"
+            dataKey="oxygen"
+            stroke="#8884d8"
+            strokeWidth={2}
+            dot={{ r: 4 }}
+            activeDot={{ r: 6 }}
+            animationDuration={500}
+          />
+          <Line
+            type="monotone"
+            dataKey="heartRate"
+            stroke="#82ca9d"
+            strokeWidth={2}
+            dot={{ r: 4 }}
+            activeDot={{ r: 6 }}
+            animationDuration={500}
+          />
+          <Line
+            type="monotone"
+            dataKey="steps"
+            stroke="#ffc658"
+            strokeWidth={2}
+            dot={{ r: 4 }}
+            activeDot={{ r: 6 }}
+            animationDuration={500}
+          />
+          <Line
+            type="monotone"
+            dataKey="calories"
+            stroke="#ff7300"
+            strokeWidth={2}
+            dot={{ r: 4 }}
+            activeDot={{ r: 6 }}
+            animationDuration={500}
+          />
+        </LineChart>
+      </ResponsiveContainer>
+    </div>
+
+    {/* Right Side: Human Model */}
+    <div className="w-full md:w-1/2 h-96">
+      <h2 className="text-2xl font-bold text-center mb-4">Human Model</h2>
       <Canvas camera={{ position: [0, 400, 600] }}>
         <ambientLight intensity={0.5} />
         <directionalLight position={[2, 2, 2]} />
