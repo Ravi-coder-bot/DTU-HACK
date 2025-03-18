@@ -52,27 +52,144 @@ export default function DoctorBookingPage() {
   ];
 
   const doctors = [
-    { id: 1, name: "Dr. Vikram Singh", specialty: "General Physician", description: "Expert in family medicine.", experience: 15, photo: doctor1 },
-    { id: 2, name: "Dr. Manoj Thakur", specialty: "Psychiatrist", description: "Specializes in mental health disorders.", experience: 12, photo: doctor2 },
-    { id: 3, name: "Dr. Anil Gupta", specialty: "Cardiologist", description: "Focuses on heart conditions.", experience: 18, photo: doctor3 },
-    { id: 4, name: "Dr. Sanjay Patel", specialty: "Ayurvedic Doctor", description: "Traditional holistic healing expert.", experience: 10, photo: doctor4 },
-    { id: 5, name: "Dr. Satyam Desai", specialty: "Dermatologist", description: "Skin care and cosmetic procedures.", experience: 8, photo: doctor5 },
-    { id: 6, name: "Dr. Sanjay Kumar", specialty: "Neurologist", description: "Treats brain and nerve disorders.", experience: 20, photo: doctor6 },
-    { id: 7, name: "Dr. Amit Mishra", specialty: "Pediatrician", description: "Caring for children’s health.", experience: 14, photo: doctor7 },
-    { id: 8, name: "Dr. Rajesh Yadav", specialty: "Orthopedic Surgeon", description: "Bone and joint specialist.", experience: 16, photo: doctor8 },
-    { id: 9, name: "Dr. Rohan Kapoor", specialty: "Gynecologist", description: "Women’s reproductive health expert.", experience: 11, photo: doctor9 },
-    { id: 10, name: "Dr. Meena Joshi", specialty: "Dentist", description: "Dental care and surgery.", experience: 9, photo: doctor1f },
-    { id: 11, name: "Dr. Kavita Nair", specialty: "Dermatologist", description: "Advanced skin treatments.", experience: 7, photo: doctor2f },
-    { id: 12, name: "Dr. Anjali Verma", specialty: "General Physician", description: "Primary care specialist.", experience: 13, photo: doctor3f },
-    { id: 13, name: "Dr. Pooja Saxena", specialty: "Ayurvedic Doctor", description: "Herbal medicine practitioner.", experience: 12, photo: doctor4f },
-    { id: 14, name: "Dr. Rekha Bhatt", specialty: "Cardiologist", description: "Heart disease management.", experience: 17, photo: doctor5f },
-    { id: 15, name: "Dr. Priya Sharma", specialty: "Neurologist", description: "Expert in neurological conditions.", experience: 19, photo: doctor6f },
-    { id: 16, name: "Dr. Shalini Iyer", specialty: "Psychiatrist", description: "Mental wellness advocate.", experience: 10, photo: doctor7f },
-    { id: 17, name: "Dr. Arjun Malhotra", specialty: "Orthopedic Surgeon", description: "Joint replacement specialist.", experience: 15, photo: doctor1 },
-    { id: 18, name: "Dr. Sunil Chopra", specialty: "Pediatrician", description: "Pediatric care expert.", experience: 8, photo: doctor2 },
-    { id: 19, name: "Dr. Deepak Rana", specialty: "Gynecologist", description: "Focuses on women’s health.", experience: 14, photo: doctor3 },
-    { id: 20, name: "Dr. Naveen Reddy", specialty: "Dentist", description: "Cosmetic dentistry specialist.", experience: 11, photo: doctor4 },
-  ];
+    { 
+        id: 1, 
+        name: "Dr. Vikram Singh", 
+        specialty: "General Physician", 
+        description: "Expert in family medicine.", 
+        experience: 15, 
+        photo: doctor1, 
+        rating: 4.5
+    },
+    { 
+        id: 2, 
+        name: "Dr. Manoj Thakur", 
+        specialty: "Psychiatrist", 
+        description: "Specializes in mental health disorders.", 
+        experience: 12, 
+        photo: doctor2, 
+        rating: 4.3
+    },
+    { 
+        id: 3, 
+        name: "Dr. Anil Gupta", 
+        specialty: "Cardiologist", 
+        description: "Focuses on heart conditions.", 
+        experience: 18, 
+        photo: doctor3, 
+        rating: 4.7
+    },
+    { 
+        id: 4, 
+        name: "Dr. Sanjay Patel", 
+        specialty: "Ayurvedic Doctor", 
+        description: "Traditional holistic healing expert.", 
+        experience: 10, 
+        photo: doctor4, 
+        rating: 4.1
+    },
+    { 
+        id: 6, 
+        name: "Dr. Sanjay Kumar", 
+        specialty: "Neurologist", 
+        description: "Treats brain and nerve disorders.", 
+        experience: 20, 
+        photo: doctor6, 
+        rating: 4.6
+    },
+    { 
+        id: 7, 
+        name: "Dr. Amit Mishra", 
+        specialty: "Pediatrician", 
+        description: "Caring for children's health.", 
+        experience: 14, 
+        photo: doctor7, 
+        rating: 4.4
+    },
+    { 
+        id: 8, 
+        name: "Dr. Rajesh Yadav", 
+        specialty: "Orthopedic Surgeon", 
+        description: "Bone and joint specialist.", 
+        experience: 16, 
+        photo: doctor8, 
+        rating: 4.2
+    },
+    { 
+        id: 9, 
+        name: "Dr. Rohan Kapoor", 
+        specialty: "Gynecologist", 
+        description: "Women's reproductive health expert.", 
+        experience: 11, 
+        photo: doctor9, 
+        rating: 4.3
+    },
+    { 
+        id: 10, 
+        name: "Dr. Meena Joshi", 
+        specialty: "Dentist", 
+        description: "Dental care and surgery.", 
+        experience: 9, 
+        photo: doctor1f, 
+        rating: 4.0
+    },
+    { 
+        id: 14, 
+        name: "Dr. Rekha Bhatt", 
+        specialty: "Cardiologist", 
+        description: "Heart disease management.", 
+        experience: 17, 
+        photo: doctor5f, 
+        rating: 4.5
+    },
+    { 
+        id: 15, 
+        name: "Dr. Priya Sharma", 
+        specialty: "Neurologist", 
+        description: "Expert in neurological conditions.", 
+        experience: 19, 
+        photo: doctor6f, 
+        rating: 4.8
+    },
+    { 
+        id: 17, 
+        name: "Dr. Arjun Malhotra", 
+        specialty: "Orthopedic Surgeon", 
+        description: "Joint replacement specialist.", 
+        experience: 15, 
+        photo: doctor1, 
+        rating: 4.4
+    },
+    { 
+        id: 18, 
+        name: "Dr. Sunil Chopra", 
+        specialty: "Pediatrician", 
+        description: "Pediatric care expert.", 
+        experience: 8, 
+        photo: doctor2, 
+        rating: 4.1
+    },
+    { 
+        id: 19, 
+        name: "Dr. Deepak Rana", 
+        specialty: "Gynecologist", 
+        description: "Focuses on women's health.", 
+        experience: 14, 
+        photo: doctor3, 
+        rating: 4.2
+    },
+    { 
+        id: 20, 
+        name: "Dr. Naveen Reddy", 
+        specialty: "Dentist", 
+        description: "Cosmetic dentistry specialist.", 
+        experience: 11, 
+        photo: doctor4, 
+        rating: 4.3
+    }
+];
+
+
 
   const filteredDoctors = searchCategory && searchCategory !== "All"
     ? doctors.filter((doc) => doc.specialty === searchCategory)
@@ -246,7 +363,8 @@ export default function DoctorBookingPage() {
               </div>
               <p className="text-gray-700 mb-2"><strong>Specialty:</strong> {selectedDoctor.specialty}</p>
               <p className="text-gray-700 mb-2"><strong>Description:</strong> {selectedDoctor.description}</p>
-              <p className="text-gray-700 mb-4"><strong>Experience:</strong> {selectedDoctor.experience} years</p>
+              <p className="text-gray-700 mb-4"><strong>Experience:</strong> {selectedDoctor.experience}</p>
+              <p className="text-gray-700 mb-4"><strong>Ratings:</strong> {selectedDoctor.rating}</p>
 
               <form onSubmit={handleBookingSubmit} className="space-y-4">
                 <div>
