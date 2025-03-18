@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react"; // Ensure React is imported
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
 
@@ -71,7 +71,7 @@ const DropdownMenu = ({ setSelectedOrgan }) => (
 );
 
 // Organ Section Component
-const OrganSection = ({ title, model, diseases }, ref) => (
+const OrganSection = React.forwardRef(({ title, model, diseases }, ref) => (
   <div ref={ref} className="flex flex-col md:flex-row items-center p-8 border-b border-gray-700">
     <div className="w-full md:w-1/2 h-96">
       <Canvas camera={{ position: [0, 2, 5] }}>
@@ -90,7 +90,7 @@ const OrganSection = ({ title, model, diseases }, ref) => (
       </ul>
     </div>
   </div>
-);
+));
 
 // Model Components
 const LungsModel = () => ModelComponent("/models/lungs2.glb", 10);  // Zoomed In
