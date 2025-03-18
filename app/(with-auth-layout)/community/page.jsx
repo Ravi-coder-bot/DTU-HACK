@@ -101,7 +101,7 @@ export default function Home() {
             <h3 className="text-sm font-bold">Answers:</h3>
             {post.answers.length === 0 ? <p className="text-gray-500">No answers yet.</p> : (
               post.answers.map((answer, index) => (
-                <p key={index} className="mt-1 bg-gray-100 p-2 rounded">{answer}</p>
+                <p key={index} className="mt-1 bg-gray-100 p-2 rounded text-black">{answer}</p> // Answer text in black
               ))
             )}
             <input

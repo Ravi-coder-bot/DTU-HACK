@@ -1,9 +1,9 @@
 import React from 'react'
 
-const MapPage = () => {
+const page = () => {
   return (
-    <div>MapPage</div>
+    <div>page</div>
   )
 }
 
-export default MapPage
+export default page
